@@ -11,6 +11,7 @@ is cheap, join the dark side. )
 
 Requirements:
 
+- python 3
 - ffmpeg
 - atomicparsley (to handle cover art)
 
