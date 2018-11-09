@@ -7,8 +7,8 @@
 # Copyright (c) 2018 Markus Stenberg
 #
 # Created:       Fri Nov  9 10:07:49 2018 mstenber
-# Last modified: Fri Nov  9 10:59:11 2018 mstenber
-# Edit time:     34 min
+# Last modified: Fri Nov  9 11:36:38 2018 mstenber
+# Edit time:     35 min
 #
 
 import os
@@ -24,7 +24,9 @@ def get_flacs_and_covers(path):
         flacs = [x for x in filenames_and_suffixes if x[1] == 'flac']
         if not flacs:
             continue
-        jpgs = [x for x in filenames_and_suffixes if x[1] in ['jpg', 'jpeg']]
+        jpgs = [x for x in filenames_and_suffixes
+                if x[1] in ['jpg', 'jpeg'] and '-resized-' not in x[0]]
+        # atomicparsley seems to stick -resized- files all over the place, sigh
         assert jpgs, 'no .jpg in %s' % dirpath
         for flac in flacs:
             assert dirpath[:len(path)] == path
